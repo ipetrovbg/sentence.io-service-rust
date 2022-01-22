@@ -10,8 +10,8 @@ package:
   #  individually: true # creates one artifact for each function
   artifact: ./target/x86_64-unknown-linux-musl/release/sentenceIO_Service_Rust
 
-#plugins:
-#  - serverless-rust
+plugins:
+  - serverless-rust
 
 functions:
   sentenceIOServiceRust:
