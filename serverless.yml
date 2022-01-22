@@ -1,13 +1,13 @@
-service: sentenceIO-Service-Rust
+service: sentenceIO_Service_Rust
 
 provider:
   name: aws
   runtime: rust
   region: eu-central-1
-  dockerless: true
+#  dockerless: true
 
 
-package:
+#package:
   #  individually: true # creates one artifact for each function
 #  artifact: ./target/x86_64-unknown-linux-musl/release/sentenceIO_Service_Rust
 
@@ -29,4 +29,4 @@ custom:
     # flags passed to cargo
     #    cargoFlags: '--features enable-awesome'
     # experimental! when set to true, artifacts are built locally outside of docker
-    dockerless: true
+#    dockerless: true
