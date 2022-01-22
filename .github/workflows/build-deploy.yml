@@ -18,10 +18,8 @@ jobs:
         uses: gmiam/rust-musl-action@master
         with:
           args: cargo build --target $BUILD_TARGET --release
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Builds and deploy
-        uses: serverless/github-action@v1.53.0
+      - name: Deploy
+        uses: serverless/github-action@master
         with:
           args: deploy
         env:

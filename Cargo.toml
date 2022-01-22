@@ -1,5 +1,5 @@
 [package]
-name = "sentenceIO-Service-Rust"
+name = "sentenceIO_Service_Rust"
 version = "0.1.0"
 authors = ["Petar Petrov <ipetrovbg@gmail.com>"]
 edition = "2018"
