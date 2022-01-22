@@ -19,7 +19,7 @@ jobs:
         uses: gmiam/rust-musl-action@master
         with:
           args: cargo build --target $BUILD_TARGET --release
-      - name: Use Node.js ${{env.NODE_VERSION}}
+      - name: Install Node.js
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}

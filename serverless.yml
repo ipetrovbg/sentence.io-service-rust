@@ -18,7 +18,7 @@ plugins:
 
 functions:
   sentenceIOServiceRust:
-    handler: sentenceIO-Service-Rust
+    handler: sentenceIO_Service_Rust
     events:
       - httpApi:
           path: /
