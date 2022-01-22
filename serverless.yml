@@ -8,19 +8,16 @@ provider:
 
 package:
   #  individually: true # creates one artifact for each function
-  exclude:
-    - ./**
-  include:
-    - ./target/x86_64-unknown-linux-musl/release/sentenceIO_Service_Rust
+  artifact: ./target/x86_64-unknown-linux-musl/release/sentenceIO_Service_Rust
 
-plugins:
-  - serverless-rust
+#plugins:
+#  - serverless-rust
 
 functions:
   sentenceIOServiceRust:
     handler: sentenceIO_Service_Rust
     events:
-      - httpApi:
+      - http:
           path: /
           method: ANY
 
