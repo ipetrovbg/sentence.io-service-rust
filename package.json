@@ -7,7 +7,7 @@
     "url": "git+https://github.com/ipetrovbg/sentence.io-service-rust.git"
   },
   "scripts": {
-    "docker:build": "docker build -o . .",
+    "docker": "docker build -o . .",
     "local": "sls invoke local --stage=local --docker --function sentenceio --path events/test.json",
     "deploy": "sls deploy --aws-profile petar.personal"
   },
@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/ipetrovbg/sentence.io-service-rust/issues"
   },
-  "homepage": "https://github.com/ipetrovbg/sentence.io-service-rust#readme",
-  "devDependencies": {
-    "serverless-rust": "^0.3.8"
-  }
+  "homepage": "https://github.com/ipetrovbg/sentence.io-service-rust#readme"
 }

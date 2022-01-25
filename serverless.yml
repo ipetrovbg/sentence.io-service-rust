@@ -1,23 +1,21 @@
 service: sentenceio
 
-
-plugins:
-  - serverless-custom-packaging-plugin
-
 provider:
+  lambdaHashingVersion: 20201221
   name: aws
   runtime: provided
   region: eu-central-1
 
 functions:
   sentenceio:
-    package:
-      path: bootstrap
     handler: bootstrap
+    package:
+      individually: true
+      exclude:
+        - '**/*'
+      include:
+        - ./bootstrap
     events:
       - httpApi:
           path: /
           method: POST
-          integration: lambda
-          request:
-            passThrough: WHEN_NO_TEMPLATES
