@@ -1,5 +1,9 @@
 service: sentenceio
 
+
+plugins:
+  - serverless-custom-packaging-plugin
+
 provider:
   name: aws
   runtime: provided
@@ -7,7 +11,9 @@ provider:
 
 functions:
   sentenceio:
-    handler: ./bootstrap
+    package:
+      path: bootstrap
+    handler: bootstrap
     events:
       - httpApi:
           path: /
