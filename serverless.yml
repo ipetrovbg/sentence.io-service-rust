@@ -19,3 +19,5 @@ functions:
       - httpApi:
           path: /
           method: POST
+          request:
+            template: application/json
