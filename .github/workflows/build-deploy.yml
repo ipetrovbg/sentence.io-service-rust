@@ -20,13 +20,13 @@ jobs:
           mkdir artifacts
           mkdir artifacts/sentenceio
           docker build -o ./artifacts/sentenceio/ .
-          ls -l
+          ls artifacts/sentenceio/ -l
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-sentenceio
-          path: ./artifacts/sentenceio
+          path: ./artifacts/sentenceio/bootstrap.zip
       - name: Deploy
         uses: serverless/github-action@master
         with:
