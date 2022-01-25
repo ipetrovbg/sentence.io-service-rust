@@ -14,7 +14,7 @@ functions:
       exclude:
         - '**/**'
       include:
-        - './bootstrap'
+        - './artifacts/sentenceio/**'
     events:
       - httpApi:
           path: /
