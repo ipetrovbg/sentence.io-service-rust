@@ -19,7 +19,9 @@ jobs:
         run: |
           mkdir artifacts
           mkdir artifacts/sentenceio
-          docker build -o ./artifacts/sentenceio/ .
+          docker build -o . .
+          zip -j bootstrap.zip bootstrap
+          mv bootstrap.zip artifacts/sentenceio/bootstrap.zip
           ls artifacts/sentenceio/ -l
 
       - name: Upload artifacts
