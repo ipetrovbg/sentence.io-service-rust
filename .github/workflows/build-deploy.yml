@@ -11,14 +11,10 @@ env:
 
 jobs:
   deploy:
-    name: deploy
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-#      - name: Build-musl
-#        uses: gmiam/rust-musl-action@master
-#        with:
-#          args: cargo build --target $BUILD_TARGET --release
       - name: Install Node.js
         uses: actions/setup-node@v1
         with:
