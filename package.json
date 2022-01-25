@@ -1,10 +1,15 @@
 {
-  "name": "sentence.io-service-rust",
+  "name": "sentence_io_service_rust",
   "version": "1.0.0",
   "description": "Sentence.io Service on Rust",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ipetrovbg/sentence.io-service-rust.git"
+  },
+  "scripts": {
+    "docker:build": "docker build -o . .",
+    "local": "sls invoke local --stage=local --docker --function sentenceio --path events/test.json",
+    "deploy": "sls deploy --aws-profile petar.personal"
   },
   "author": "",
   "license": "ISC",

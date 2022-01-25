@@ -12,8 +12,9 @@ async fn main() -> Result<(), Error> {
 }
 
 async fn handler(event: Event, context: Context) -> Result<Output, Error> {
+    println!("{}", event.message);
     Ok(Output {
-        message: format!("{}", event.message),
+        message: format!("Prefixed {}", event.message),
         request_id: context.request_id,
     })
 }
