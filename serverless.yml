@@ -12,9 +12,9 @@ functions:
     package:
       individually: true
       exclude:
-        - '**/*'
+        - '**/**'
       include:
-        - ./bootstrap
+        - './bootstrap'
     events:
       - httpApi:
           path: /
