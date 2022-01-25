@@ -15,24 +15,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-#      - name: Install Node.js
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: ${{ env.NODE_VERSION }}
-#      - name: Install dependencies
-#        run: npm run docker
       - name: Compile
-        run: docker build -o . .
-      - name: Move binaries to artifacts
         run: |
-          mkdir artifacts
-          mkdir artifacts/sentenceio/
-          mv bootstrap.zip artifacts/sentenceio/
+          ls -l
+          docker build -o ./artifacts/sentenceio/ .
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-sentenceio
-          path: artifacts/sentenceio
+          path: ./artifacts/sentenceio
       - name: Deploy
         uses: serverless/github-action@master
         with:
