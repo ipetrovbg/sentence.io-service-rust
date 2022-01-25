@@ -18,11 +18,12 @@ jobs:
       - name: Compile
         run: |
           mkdir artifacts
-          mkdir artifacts/sentenceio
+          mkdir ./artifacts/sentenceio
+          ls artifacts -l
           docker build -o . .
-          zip -j bootstrap.zip bootstrap
-          mv bootstrap.zip artifacts/sentenceio/bootstrap.zip
-          ls artifacts/sentenceio/ -l
+          zip -j ./bootstrap.zip ./bootstrap
+          mv bootstrap.zip ./artifacts/sentenceio/bootstrap.zip
+          ls ./artifacts/sentenceio/ -l
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
