@@ -22,4 +22,4 @@ RUN mv /sentence.io/target/x86_64-unknown-linux-musl/release/bootstrap /bootstra
 #RUN zip -j /bootstrap.zip /bootstrap
 
 FROM scratch AS export
-COPY --from=builder /bootstrap.zip /
+COPY --from=builder /bootstrap /
