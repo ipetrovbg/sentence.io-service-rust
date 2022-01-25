@@ -7,6 +7,7 @@ RUN apt -y update
 RUN apt install -y musl-tools musl-dev
 RUN apt-get install -y build-essential
 RUN apt install -y gcc-x86-64-linux-gnu
+RUN apt-get install zip
 
 ADD ./ ./sentence.io
 WORKDIR /sentence.io
@@ -18,6 +19,7 @@ ENV CC_x86_64-unknown-linux-musl=gcc-x86-64-linux-gnu
 
 RUN cargo build --target x86_64-unknown-linux-musl --release
 RUN mv /sentence.io/target/x86_64-unknown-linux-musl/release/bootstrap /bootstrap
+RUN zip -j /bootstrap.zip /bootstrap
 
 FROM scratch AS export
-COPY --from=builder /bootstrap /
+COPY --from=builder /bootstrap.zip /

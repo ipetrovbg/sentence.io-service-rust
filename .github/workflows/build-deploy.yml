@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir artifacts
           mkdir artifacts/sentenceio/
-          mv bootstrap artifacts/sentenceio/
+          mv bootstrap.zip artifacts/sentenceio/
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
