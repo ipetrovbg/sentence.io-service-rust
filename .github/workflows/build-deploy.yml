@@ -22,7 +22,7 @@ jobs:
           ls artifacts -l
           docker build -o . .
           ls -l
-          zip -j ./bootstrap.zip ./bootstrap
+          zip -j bootstrap bootstrap
           mv bootstrap.zip ./artifacts/sentenceio/bootstrap.zip
 
       - name: Upload artifacts
