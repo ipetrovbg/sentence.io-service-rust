@@ -19,7 +19,6 @@ jobs:
         run: docker build -o . .
       - run: |
           mkdir artifacts
-          mkdir ./artifacts
           zip -j bootstrap.zip bootstrap
           mv bootstrap.zip ./artifacts/bootstrap.zip
       - name: Upload artifacts
