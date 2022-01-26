@@ -18,7 +18,6 @@ ENV CC_x86_64_unknown_linux_musl=gcc-x86-64-linux-gnu
 ENV CC_x86_64-unknown-linux-musl=gcc-x86-64-linux-gnu
 
 RUN cargo build --target x86_64-unknown-linux-musl --release
-RUN ls -l
 RUN mv /sentence.io/target/x86_64-unknown-linux-musl/release/bootstrap /bootstrap
 #RUN zip -j /bootstrap.zip /bootstrap
 
