@@ -16,20 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compile
-        run: |
+        run: docker build -o . .
+      - run: |
           mkdir artifacts
-          mkdir ./artifacts/sentenceio
-          ls artifacts -l
-          docker build -o . .
-          ls -l
-          zip -j bootstrap bootstrap
-          mv bootstrap.zip ./artifacts/sentenceio/bootstrap.zip
-
+          mkdir ./artifacts
+          zip -j bootstrap.zip bootstrap
+          mv bootstrap.zip ./artifacts/bootstrap.zip
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-sentenceio
-          path: ./artifacts/sentenceio/bootstrap.zip
+          path: ./artifacts/bootstrap.zip
       - name: Deploy
         uses: serverless/github-action@master
         with:
