@@ -18,6 +18,7 @@ jobs:
       - run: mkdir artifacts
       - name: Compile
         run: docker build -o ./ ./
+      - run: ls -l
       - run: tar -czf ./artifacts/bootstrap.tar.gz bootstrap
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
