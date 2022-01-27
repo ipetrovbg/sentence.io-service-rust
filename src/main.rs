@@ -13,7 +13,7 @@ async fn main() -> Result<(), Error> {
 
 async fn handler(event: ApiGatewayEvent, context: Context) -> Result<Output, Error> {
     Ok(Output {
-        message: format!("v3 {}", event.body.message),
+        message: format!("v4 {}", event.body.message),
         request_id: context.request_id,
     })
 }
