@@ -46,7 +46,7 @@ jobs:
         with:
           path: target/x86_64-unknown-linux-musl/release/${{ env.BINARY_NAME }}*
 
-      - uses: papeloto/action-zip@v1
+      - uses: vimtor/action-zip@1
         with:
           files: target/x86_64-unknown-linux-musl/release/${{ env.BINARY_NAME }}*
           dest: artifacts/bootstrap.zip
