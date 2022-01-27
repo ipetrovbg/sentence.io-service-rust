@@ -1,3 +1,5 @@
 {
-  "message": "Some test message"
+  "body": {
+    "message": "Some test message"
+  }
 }

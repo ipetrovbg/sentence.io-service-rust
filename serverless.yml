@@ -10,7 +10,6 @@ functions:
   sentenceio:
     handler: bootstrap
     package:
-#      artifact: artifacts/bootstrap.zip
       individually: true
       exclude:
         - '**/**'
@@ -20,5 +19,3 @@ functions:
       - httpApi:
           path: /
           method: POST
-          request:
-            template: application/json

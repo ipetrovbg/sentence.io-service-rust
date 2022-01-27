@@ -26,6 +26,7 @@ jobs:
         with:
           name: sentenceio-artifacts
           path: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -37,16 +38,8 @@ jobs:
           name: sentenceio-artifacts
           path: target/${{ env.BUILD_TARGET }}/release
 
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: target/${{ env.BUILD_TARGET }}/release
-
       - name: Move binaries
         run: mv target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }} bootstrap
-#      - uses: vimtor/action-zip@v1
-#        with:
-#          files: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}
-#          dest: artifacts/bootstrap.zip
 
       - name: Serverless deploy
         uses: serverless/github-action@master

@@ -7,6 +7,11 @@ pub struct Output {
 }
 
 #[derive(Deserialize)]
+pub struct ApiGatewayEvent {
+    pub body: Event,
+}
+
+#[derive(Deserialize)]
 pub struct Event {
     pub message: String
 }

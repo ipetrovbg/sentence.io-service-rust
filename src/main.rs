@@ -2,7 +2,7 @@ mod models;
 
 use lambda_runtime::Context;
 use lambda_runtime::Error;
-use crate::models::{Event, Output};
+use crate::models::{ApiGatewayEvent, Output};
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
@@ -11,10 +11,9 @@ async fn main() -> Result<(), Error> {
     Ok(())
 }
 
-async fn handler(event: Event, context: Context) -> Result<Output, Error> {
-    println!("{}", event.message);
+async fn handler(event: ApiGatewayEvent, context: Context) -> Result<Output, Error> {
     Ok(Output {
-        message: format!("v3 {}", event.message),
+        message: format!("v3 {}", event.body.message),
         request_id: context.request_id,
     })
 }
