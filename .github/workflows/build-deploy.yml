@@ -18,9 +18,7 @@ jobs:
       - run: mkdir build
       - name: Compile
         run: docker build -o build .
-      - run: |
-          pwa
-          ls -la
+      - run: ls -la build
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
