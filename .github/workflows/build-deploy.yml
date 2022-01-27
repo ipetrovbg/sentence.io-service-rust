@@ -41,10 +41,12 @@ jobs:
         run: ls -R
         working-directory: target/${{ env.BUILD_TARGET }}/release
 
-      - uses: vimtor/action-zip@v1
-        with:
-          files: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}
-          dest: artifacts/bootstrap.zip
+      - name: Move binaries
+        run: mv target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }} bootstrap
+#      - uses: vimtor/action-zip@v1
+#        with:
+#          files: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}
+#          dest: artifacts/bootstrap.zip
 
       - name: Serverless deploy
         uses: serverless/github-action@master
