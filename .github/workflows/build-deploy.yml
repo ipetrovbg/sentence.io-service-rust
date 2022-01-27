@@ -24,18 +24,8 @@ jobs:
           args: cargo build --target $BUILD_TARGET --release
       - uses: actions/upload-artifact@v2
         with:
-          path: target/x86_64-unknown-linux-musl/release/${{ env.BINARY_NAME }}*
-#      - name: Compile
-#        run: docker build -o build .
-#      - run: |
-#          ls -la
-#          ls -la build
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v2
-#        with:
-#          path: build/bootstrap.zip
-#          if-no-files-found: error
-
+          name: sentenceio-artifacts
+          path: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}*
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -44,11 +34,16 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
-          path: target/x86_64-unknown-linux-musl/release/${{ env.BINARY_NAME }}*
+          name: sentenceio-artifacts
+          path: target/${{ env.BUILD_TARGET }}/release
 
-      - uses: vimtor/action-zip@master
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: target/${{ env.BUILD_TARGET }}/release
+
+      - uses: vimtor/action-zip@v1
         with:
-          files: target/x86_64-unknown-linux-musl/release/${{ env.BINARY_NAME }}*
+          files: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}*
           dest: artifacts/bootstrap.zip
 
       - name: Deploy
