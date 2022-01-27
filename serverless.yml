@@ -10,12 +10,12 @@ functions:
   sentenceio:
     handler: bootstrap
     package:
-      artifact: ./dist/bootstrap.zip
+      artifact: ./build/bootstrap.zip
       individually: true
       exclude:
         - '**/**'
       include:
-        - ./dist/**
+        - ./build/**
     events:
       - httpApi:
           path: /
