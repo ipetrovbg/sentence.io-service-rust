@@ -6,8 +6,11 @@ on:
       - main
 
 env:
+  CARGO_TERM_COLOR: always
   BUILD_TARGET: x86_64-unknown-linux-musl
   NODE_VERSION: '14.18.2'
+  BINARY_NAME: bootstrap
+
 
 jobs:
   build:
@@ -15,17 +18,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: mkdir build
       - name: Compile
-        run: docker build -o ${{ github.workspace }}/build .
-      - run: |
-          ls -la
-          ls -la build
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: gmiam/rust-musl-action@master
         with:
-          path: build/bootstrap.zip
-          if-no-files-found: error
+          args: cargo build --target $BUILD_TARGET --release
+      - uses: actions/upload-artifact@v2
+        with:
+          path: target/x86_64-unknown-linux-musl/release/${{ env.BINARY_NAME }}*
+#      - name: Compile
+#        run: docker build -o build .
+#      - run: |
+#          ls -la
+#          ls -la build
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v2
+#        with:
+#          path: build/bootstrap.zip
+#          if-no-files-found: error
 
   deploy:
     name: Deploy
@@ -35,8 +44,7 @@ jobs:
 
       - uses: actions/download-artifact@v2
         with:
-          path: build
-      - run: ls -la
+          path: target/x86_64-unknown-linux-musl/release/
       - name: Deploy
         uses: serverless/github-action@master
         with:
