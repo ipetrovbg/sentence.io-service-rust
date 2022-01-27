@@ -15,20 +15,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: mkdir artifacts
+      - run: mkdir dist
       - name: Compile
-        run: docker build -o ./ ./
-      - run: ls -l
+        run: docker build -o dist .
+      - run: ls -l dist
 #      - run: tar -czf ./artifacts/bootstrap.tar.gz bootstrap
-      - run: |
-          mkdir artifacts
-          mv bootstrap.zip ./artifacts/bootstrap.zip
-          ls artifacts -l
+#      - run: |
+#          mkdir artifacts
+#          mv bootstrap.zip ./artifacts/bootstrap.zip
+#          ls artifacts -l
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-sentenceio
-          path: ./artifacts/bootstrap.zip
+          path: ./dist/bootstrap.zip
       - name: Deploy
         uses: serverless/github-action@master
         with:

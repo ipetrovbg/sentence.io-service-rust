@@ -18,10 +18,11 @@ ENV CC_x86_64_unknown_linux_musl=gcc-x86-64-linux-gnu
 ENV CC_x86_64-unknown-linux-musl=gcc-x86-64-linux-gnu
 
 RUN cargo build --target x86_64-unknown-linux-musl --release
-RUN mv ./target/x86_64-unknown-linux-musl/release/bootstrap bootstrap
+RUN mkdir dist
+RUN mv ./target/x86_64-unknown-linux-musl/release/bootstrap /dist/bootstrap
 RUN echo "----------- FILES AND FOLDERS ---------"
 RUN ls -l
-RUN zip -j /bootstrap.zip /bootstrap
+RUN zip -j /dist/bootstrap.zip /dist/bootstrap
 
 FROM scratch AS export
-COPY --from=builder bootstrap.zip /
+COPY --from=builder ./dist /dist
