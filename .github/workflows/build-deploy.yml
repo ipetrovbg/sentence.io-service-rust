@@ -25,7 +25,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: sentenceio-artifacts
-          path: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}*
+          path: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -43,10 +43,10 @@ jobs:
 
       - uses: vimtor/action-zip@v1
         with:
-          files: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}*
+          files: target/${{ env.BUILD_TARGET }}/release/${{ env.BINARY_NAME }}
           dest: artifacts/bootstrap.zip
 
-      - name: Deploy
+      - name: Serverless deploy
         uses: serverless/github-action@master
         with:
           args: deploy
