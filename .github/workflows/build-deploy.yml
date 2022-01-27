@@ -18,11 +18,12 @@ jobs:
       - run: mkdir build
       - name: Compile
         run: docker build -o build .
+      - run: ls -la
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: build-sentenceio
-          path: ./build/bootstrap.zip
+          path: build/bootstrap.zip
+          if-no-files-found: error
       - name: Deploy
         uses: serverless/github-action@master
         with:
