@@ -18,7 +18,7 @@ ENV CC_x86_64_unknown_linux_musl=gcc-x86-64-linux-gnu
 ENV CC_x86_64-unknown-linux-musl=gcc-x86-64-linux-gnu
 
 RUN cargo build --target x86_64-unknown-linux-musl --release
-RUN mv ./target/x86_64-unknown-linux-musl/release/bootstrap /build/bootstrap
+RUN mv ./target/x86_64-unknown-linux-musl/release/bootstrap /build
 RUN echo "----------- FILES AND FOLDERS ---------"
 RUN ls -l
 RUN zip -j /build/bootstrap.zip /build/bootstrap
