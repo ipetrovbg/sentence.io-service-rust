@@ -19,16 +19,20 @@ jobs:
       - name: Compile
         run: docker build -o ./ ./
       - run: ls -l
-      - run: tar -czf ./artifacts/bootstrap.tar.gz bootstrap
+#      - run: tar -czf ./artifacts/bootstrap.tar.gz bootstrap
+      - run: |
+          mkdir artifacts
+          mv bootstrap.zip ./artifacts/bootstrap.zip
+          ls artifacts -l
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-sentenceio
-          path: ./artifacts/bootstrap.tar.gz
+          path: ./artifacts/bootstrap.zip
       - name: Deploy
         uses: serverless/github-action@master
         with:
-          args: -c "tar -xf ./artifacts/bootstrap.tar.gz ./dist && zip -j ./dist/bootstrap.zip ./dist/bootstrap && sls deploy"
+          args: deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
