@@ -7,7 +7,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  BUILD_TARGET: aarch64-unknown-linux-musl #x86_64-unknown-linux-musl
+  BUILD_TARGET: x86_64-unknown-linux-musl
   BINARY_NAME: bootstrap
 
 
@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compile
-        uses: ismail/rust-action@main #gmiam/rust-musl-action@master
+        uses: gmiam/rust-musl-action@master
         with:
           args: cargo build --target $BUILD_TARGET --release
       - uses: actions/upload-artifact@v2
