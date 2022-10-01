@@ -1,4 +1,4 @@
-service: sentence_io_service
+service: sentence-io-service
 
 plugins:
   - serverless-plugin-lambda-insights
