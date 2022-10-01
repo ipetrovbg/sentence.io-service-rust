@@ -1,22 +1,24 @@
-service: sentenceio
+service: sentence_io_service
+
+plugins:
+  - serverless-plugin-lambda-insights
 
 provider:
-  lambdaHashingVersion: 20201221
   name: aws
   runtime: provided
-  region: eu-central-1
   memorySize: 128
+  region: eu-central-1
+
+package:
+  individually: true
 
 functions:
-  sentenceio:
+  test:
     handler: bootstrap
+    url: true
     package:
       individually: true
       exclude:
         - '**/**'
       include:
         - ./bootstrap
-    events:
-      - httpApi:
-          path: /
-          method: POST
