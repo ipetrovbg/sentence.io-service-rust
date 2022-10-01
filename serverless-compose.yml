@@ -1,0 +1,3 @@
+services:
+  sentence_io_service_test:
+    path: test

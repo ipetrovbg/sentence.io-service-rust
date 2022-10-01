@@ -1,20 +1,14 @@
 {
-  "name": "sentence_io_service_rust",
+  "name": "sentence.io-service",
   "version": "1.0.0",
-  "description": "Sentence.io Service on Rust",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ipetrovbg/sentence.io-service-rust.git"
-  },
-  "scripts": {
-    "docker": "docker build -o . .",
-    "local": "sls invoke local --stage=local --docker --function sentenceio --path events/test.json",
-    "deploy": "sls deploy --aws-profile petar.personal"
-  },
-  "author": "",
+  "author": "Petar Petrov <ipetrovbg@gmail.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ipetrovbg/sentence.io-service-rust/issues"
+  "dependencies": {
+    "serverless": "^3.19.0",
+    "serverless-compose": "^2.4.0"
   },
-  "homepage": "https://github.com/ipetrovbg/sentence.io-service-rust#readme"
+  "devDependencies": {
+    "@serverless/compose": "^1.2.4",
+    "serverless-plugin-lambda-insights": "^1.6.0"
+  }
 }
