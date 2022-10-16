@@ -2,7 +2,7 @@ mod models;
 
 use lambda_runtime::Context;
 use lambda_runtime::Error;
-use crate::models::{ApiGatewayEvent, Output};
+use crate::models::{DynamoDBNewImageTrigger, Output};
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
@@ -11,9 +11,9 @@ async fn main() -> Result<(), Error> {
     Ok(())
 }
 
-async fn handler(event: ApiGatewayEvent, context: Context) -> Result<Output, Error> {
+async fn handler(event: DynamoDBNewImageTrigger, context: Context) -> Result<Output, Error> {
     Ok(Output {
-        message: format!("v4 {}", event.body.message),
+        message: event.dynamodb.new_image,
         request_id: context.request_id,
     })
 }
