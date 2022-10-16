@@ -13,8 +13,14 @@ pub struct DynamoDB {
 }
 
 #[derive(Deserialize)]
-pub struct DynamoDBNewImageTrigger {
+pub struct DynamoDBRecords {
     #[serde(rename = "eventID")]
     pub event_id: String,
     pub dynamodb: DynamoDB
+}
+
+#[derive(Deserialize)]
+pub struct DynamoDBNewImageTrigger {
+    #[serde(rename = "Records")]
+    records: Vec<DynamoDBRecords>
 }
