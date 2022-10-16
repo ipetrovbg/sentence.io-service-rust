@@ -20,10 +20,14 @@ async fn main() -> Result<(), Error> {
 
 async fn handler(event: LambdaEvent<DynamoDBNewImageTrigger>) -> Result<Output, Error> {
     let (event, context) = event.into_parts();
-    info!("DynamoDB new record: {}", event.dynamodb.new_image);
+
+    for record in event.records.iter() {
+        info!("DynamoDB new record ID: {}", record.event_id);
+        info!("DynamoDB new record: {}", record.dynamodb.new_image);
+    }
+
 
     Ok(Output {
-        message: event.dynamodb.new_image,
         request_id: context.request_id,
     })
 }

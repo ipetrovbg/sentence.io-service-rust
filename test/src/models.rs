@@ -2,7 +2,6 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize)]
 pub struct Output {
-    pub message: serde_json::Value,
     pub request_id: String,
 }
 
@@ -22,5 +21,5 @@ pub struct DynamoDBRecords {
 #[derive(Deserialize)]
 pub struct DynamoDBNewImageTrigger {
     #[serde(rename = "Records")]
-    records: Vec<DynamoDBRecords>
+    pub records: Vec<DynamoDBRecords>
 }
