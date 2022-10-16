@@ -15,7 +15,7 @@ provider:
         - "dynamodb:GetShardIterator"
         - "dynamodb:DescribeStream"
         - "dynamodb:ListStreams"
-      Resource: 'arn:aws:dynamodb:*:*:table/ParseStep/stream'
+      Resource: 'arn:aws:dynamodb:*:*:table/ParseStep/stream/*'
 
 package:
   individually: true
