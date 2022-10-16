@@ -11,8 +11,10 @@ provider:
   iamRoleStatements:
     - Effect: "Allow"
       Action:
-        - "dynamodb:GetItem"
-        - "dynamodb:PutItem"
+        - "dynamodb:GetRecords"
+        - "dynamodb:GetShardIterator"
+        - "dynamodb:DescribeStream"
+        - "dynamodb:ListStreams"
       Resource: 'arn:aws:dynamodb:*:*:table/ParseStep'
 
 package:
